@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const PrivateLayout = ({ children, setUser }) => {
   const logout = () => {
@@ -10,16 +10,16 @@ export const PrivateLayout = ({ children, setUser }) => {
   return (
     <>
       <Navbar bg="light" expand="sm">
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={NavLink} activeClassName="text-dark" to="/">
           Covid Slayer
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={NavLink} exact activeClassName="text-dark" to="/">
               Dashboard
             </Nav.Link>
-            <Nav.Link as={Link} to="/game">
+            <Nav.Link as={NavLink} exact activeClassName="text-dark" to="/game">
               Game
             </Nav.Link>
           </Nav>
