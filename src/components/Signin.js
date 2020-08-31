@@ -23,7 +23,11 @@ export function Signin({ setUser }) {
       setUser(res.data.user);
       localStorage.setItem("token", res.data.token);
     } catch (error) {
-      setError(error.response.data.error);
+      if (error.response) {
+        setError(error.response.data.error);
+      } else {
+        setError(error.message);
+      }
       setLoading(false);
     }
   };

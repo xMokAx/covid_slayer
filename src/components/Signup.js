@@ -28,7 +28,12 @@ export function Signup({ setUser }) {
       });
       localStorage.setItem("token", res.data.token);
     } catch (error) {
-      setError(error.response.data.error);
+      if (error.response) {
+        setError(error.response.data.error);
+      } else {
+        setError(error.message);
+      }
+
       setLoading(false);
     }
   };
