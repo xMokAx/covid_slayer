@@ -20,7 +20,6 @@ export default function App() {
       axios
         .get("/signin")
         .then((res) => {
-          setLoading(false);
           setUser(res.data.user);
         })
         .catch((err) => {
@@ -31,6 +30,12 @@ export default function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      setLoading(false);
+    }
+  }, [user]);
 
   if (loading) {
     return <LoadingPage />;
